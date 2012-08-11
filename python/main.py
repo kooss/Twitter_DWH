@@ -1,10 +1,11 @@
+import ConfigParser
 import tweepy
 import sys
 from db_connector import db_connector
 from twitter_ETL_connector import Twitter_ETL_Connector
 import os
 
-config_filename = 'settings.cfg'
+config_filename = './settings.cfg'
 
 etl_connector = Twitter_ETL_Connector(config_filename)
 
@@ -17,8 +18,9 @@ try:
   if etl_connector.read_config_file():
     pass
   elif etl_connector.write_config_file():
-    fatal('Config file has been created. Please enter connection',\
-      ' information inside ', config_filename)
+    print 'Config file has been created. Please enter connection',\
+      ' information inside ', config_filename
+    sys.exit(1)
   else:
     fatal('Exceptional condition: configuration file ', config_filename,\
       'could not be read, but also could not be written to')

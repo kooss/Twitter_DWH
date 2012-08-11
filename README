@@ -1,5 +1,68 @@
 Twitter_DWH
 ===========
 
+About
+=====
 This ETL application is used for my professional (as opposed to personal)
-weblog at http://blogs.infosupport.com/author/kooss/
+weblog at http://blogs.infosupport.com/author/kooss/.
+
+Requirements
+============
+- Python 2.6+
+- MySQL
+
+Installation
+============
+The following steps will lead to a successful installation:
+- Create a user with sufficient rights (root will do, but is not that safe 
+  ;-)) within MySQL
+- Execute contents of the file 'SQL/twitterdb_MySQL.sql' as a SQL script within
+  MySql
+- Run 'main.py' inside the directory 'python'
+
+This will create a new file with the name 'settings.cfg' inside the working
+directory. Inside 'settings.cfg', the sections 'Twitter API' and 'Database'
+must be updated with the right settings. 
+
+Warnings:
+ !! Do not alter the Twitter Authentication settings manually !!
+ !! If you don't understand what 'consumer_secret' and 'consumer_token' are
+    for, please read the section below !!
+
+- Run 'main.py'
+
+This time, the output will be: 
+"please go to this url : http://(long URL at twitter.com)"
+"Enter the PIN you are given at the above url : "
+When you go to the mentioned URL, you will be able to authorize your (just
+registered) application to read the data of your Twitter account. When you 
+click 'Authorize app', you'll be given a PIN which should be
+entered at the prompt.
+
+At this point, the authorization should work. However, in my own experience
+sometimes a 401 (not authorized) access would occur after creating a new
+application. In that case:
+1. Reset the keys at the Twitter Dev website for your application
+2. Update the consumer key & secret inside settings.cfg
+3. Remove the values of auth_key and auth_secret inside settings.cfg
+4. Re-start main.py
+
+After these steps, the application should work fine, pull information from
+Twitter and store it in the local MySQL database!
+
+About consumer_secret and consumer_token
+========================================
+Because this application is for development purposes, it needs to be able to
+authorize itself when communicating with Twitter. To provide the means of 
+authorization, Twitter requires you to:
+
+- log in at Twitter.com
+- head to dev.twitter.com
+- register you application (click 'Create an App')
+
+After registering your application, you will have your application under the
+'My applications' menu option (dev.twitter.com -> top-right is your profile 
+image providing a drop-down menu -> click 'My Applications'). 
+
+Your application page should read a consumer key (or 'token') and a 
+consumer secret.

@@ -6,7 +6,6 @@ class Twitter_ETL_Connector(object):
     self.twitter_conn_info = {
       'consumer_token': ''
       , 'consumer_secret': ''
-      , 'token_filepath': './twitter_tokens'
     }
   
     self.db_conn_info = {
