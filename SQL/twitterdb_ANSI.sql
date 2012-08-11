@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2012 at 03:00 PM
+-- Generation Time: Aug 11, 2012 at 03:35 PM
 -- Server version: 5.5.24
 -- PHP Version: 5.3.10-1ubuntu3.2
 
@@ -18,6 +18,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `twitterdb`
 --
+CREATE DATABASE `twitterdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE twitterdb;
 
 -- --------------------------------------------------------
 
