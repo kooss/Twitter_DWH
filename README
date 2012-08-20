@@ -26,7 +26,7 @@ must be updated with the right settings.
 
 Warnings:
  !! Do not alter the Twitter Authentication settings manually !!
- !! If you don't understand what 'consumer_secret' and 'consumer_token' are
+ !! If you don't understand what 'consumer_secret' and 'consumer_key' are
     for, please read the section below !!
 
 - Run 'main.py'
@@ -50,7 +50,7 @@ application. In that case:
 After these steps, the application should work fine, pull information from
 Twitter and store it in the local MySQL database!
 
-About consumer_secret and consumer_token
+About consumer_secret and consumer_key
 ========================================
 Because this application is for development purposes, it needs to be able to
 authorize itself when communicating with Twitter. To provide the means of 
@@ -64,5 +64,4 @@ After registering your application, you will have your application under the
 'My applications' menu option (dev.twitter.com -> top-right is your profile 
 image providing a drop-down menu -> click 'My Applications'). 
 
-Your application page should read a consumer key (or 'token') and a 
-consumer secret.
+Your application page should read your consumer key and consumer secret.
