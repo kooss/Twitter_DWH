@@ -4,7 +4,7 @@ import ConfigParser
 class Twitter_ETL_Connector(object):
   def __init__(self, config_filename):
     self.twitter_conn_info = {
-      'consumer_token': ''
+      'consumer_key': ''
       , 'consumer_secret': ''
     }
   
@@ -16,7 +16,7 @@ class Twitter_ETL_Connector(object):
     }
 
     self.twitter_auth_info = {
-      'auth_key': ''
+      'auth_token': ''
       , 'auth_secret': ''
     }
 
@@ -61,13 +61,13 @@ class Twitter_ETL_Connector(object):
 
   def connect(self):
     self.auth = tweepy.OAuthHandler(
-      self.twitter_conn_info['consumer_token'], 
+      self.twitter_conn_info['consumer_key'], 
       self.twitter_conn_info['consumer_secret'])
-    if self.twitter_auth_info['auth_key'] == '':
+    if self.twitter_auth_info['auth_token'] == '':
       return False
     else:
       self.auth.set_access_token(
-        self.twitter_auth_info['auth_key']
+        self.twitter_auth_info['auth_token']
         , self.twitter_auth_info['auth_secret'])
       return True
 
@@ -78,7 +78,7 @@ class Twitter_ETL_Connector(object):
   def get_access_token(self, verifier):
     try:
       self.auth.get_access_token(verifier)
-      self.twitter_auth_info['auth_key'] = self.auth.access_token.key
+      self.twitter_auth_info['auth_token'] = self.auth.access_token.key
       self.twitter_auth_info['auth_secret'] = self.auth.access_token.secret
       return True
     except tweepy.TweepError:
